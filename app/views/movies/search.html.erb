@@ -1,0 +1,36 @@
+<div align="center">
+<h1>Quels films recherches tu ?</h1>
+
+<%= form_tag(movies_search_path, method: 'get') do |f| %>
+  <%= label_tag 'Saisie ton titre :' %>
+  <%= text_field_tag :movie %>
+  <%= submit_tag "Go !" %>
+<% end %>
+
+<% unless @tab == nil%>
+<h1>Voici les films qui correspondent à ta recherche :)</h1>
+
+	<table class="table table-striped">
+  	<tr>
+  	  <th scope="col" style="text-align: center">Titre du film  </th>
+   	  <th scope="col" style="text-align: center">Année de sortie  </th>
+   	  <th scope="col" style="text-align: center">Affiche du film  </th>
+
+   
+  	</tr>
+ 
+  	<% @tab.each do |film| %>
+  
+    <tr>
+	  <td style="text-align: center"><%= film["title"] %></td>
+      <td style="text-align: center"><%= film["release_date"] %></td>
+      <td style="text-align: center"><img src="http://cf2.imgobject.com/t/p/w500/<%=film["poster_path"]%>" style="width:150px;"></td>
+
+      
+    </tr>
+    <% end %>
+    </table>
+</br>
+<% end %>
+
+</div>
